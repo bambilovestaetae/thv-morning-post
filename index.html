@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light only" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Taekook Morning Post — Fanfiction AU</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root { color-scheme: light only; }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-text-size-adjust: 100%; }
+    body {
+      background: #fafafa;
+      font-family: 'Caveat', cursive, sans-serif;
+      color: #111111;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 12px;
+    }
+    @media (max-width: 500px) {
+      body { padding: 0 0 18px; background: #ffffff; }
+      .ig-card { border: none !important; border-radius: 0 !important; }
+    }
+    b, strong { font-weight: 700 !important; color: #000000; }
+    .ig-card {
+      width: 100%;
+      max-width: 470px;
+      background: #ffffff;
+      border: 1px solid #dbdbdb;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .ig-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 11px 14px;
+    }
+    .ig-user-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .avatar-ring {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      padding: 2px;
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .avatar {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 2px solid #ffffff;
+      background: #2b2523;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .avatar img, .c-avatar img, .creator-mini img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .user-meta { line-height: 1.15; }
+    .username-row {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 17px;
+      font-weight: 700;
+      color: #000000;
+    }
+    .location-line {
+      font-size: 13.5px;
+      color: #262626;
+      margin-top: 1px;
+      font-weight: 500;
+    }
+    .music-line {
+      font-size: 13.5px;
+      color: #262626;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 1px;
+      font-weight: 500;
+    }
+    .music-note-svg {
+      width: 11px;
+      height: 11px;
+      flex-shrink: 0;
+    }
+    .verified {
+      width: 13px;
+      height: 13px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .more-dots {
+      font-size: 18px;
+      letter-spacing: 1px;
+      cursor: pointer;
+      color: #262626;
+    }
+    .carousel {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      background: #000000;
+      overflow: hidden;
+    }
+    .slides {
+      display: flex;
+      height: 100%;
+      transition: transform 0.32s ease;
+    }
+    .slides img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .slide-counter {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(26, 26, 26, 0.78);
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 14px;
+    }
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 255, 255, 0.88);
+      color: #262626;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+      z-index: 2;
+    }
+    .nav-prev { left: 10px; }
+    .nav-next { right: 10px; }
+
+    .audio-btn {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(26, 26, 26, 0.78);
+      color: #ffffff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .actions-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px 6px;
+      position: relative;
+    }
+    .left-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .icon-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+    }
+    .dots {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 5px;
+    }
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #dbdbdb;
+    }
+    .dot.active { background: #0095f6; }
+    .post-body {
+      padding: 4px 14px 14px;
+      font-size: 16.5px;
+      line-height: 1.32;
+      color: #111111;
+    }
+    .likes-line {
+      font-weight: 700;
+      color: #000000;
+      margin-bottom: 3px;
+      font-size: 17px;
+    }
+    .liked-by {
+      font-weight: 500;
+      margin-bottom: 7px;
+      font-size: 16px;
+      color: #111111;
+    }
+    .caption { margin-bottom: 7px; color: #111111; }
+    .mention, .hashtag { color: #0056b3; font-weight: 700; }
+    .hashtags { margin-top: 5px; color: #0056b3; font-size: 15.5px; }
+    .time-stamp {
+      font-size: 12.5px;
+      color: #737373;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin-top: 6px;
+    }
+
+    .comments-wrap {
+      border-top: 1px solid #efefef;
+      padding: 12px 14px 6px;
+    }
+    .view-all {
+      color: #737373;
+      font-size: 15.5px;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .comment {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 13px;
+      align-items: flex-start;
+    }
+    .c-avatar {
+      position: relative;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #ececec;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+      overflow: hidden;
+      margin-top: 2px;
+    }
+    .c-content { flex: 1; font-size: 16.5px; line-height: 1.3; color: #111111; }
+
+    .pinned-row {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 13px;
+      color: #737373;
+      font-weight: 500;
+      margin-bottom: 1px;
+    }
+
+    .c-author-tag {
+      color: #737373;
+      font-size: 14px;
+      font-weight: 700;
+      margin-left: 4px;
+    }
+    .c-meta {
+      margin-top: 3px;
+      font-size: 13.5px;
+      color: #737373;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .emoji-only-reply {
+      font-size: 17px;
+      letter-spacing: 2px;
+      display: inline-block;
+      margin-top: 1px;
+    }
+
+    .creator-liked-badge {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      margin-left: 2px;
+    }
+    .creator-mini {
+      position: relative;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #2b2523;
+      color: #ffffff;
+      font-size: 8px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .mini-heart-dot {
+      position: absolute;
+      bottom: -2px;
+      right: -3px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ed4956;
+      border: 1.5px solid #ffffff;
+      color: #ffffff;
+      font-size: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    .c-like-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 28px;
+      margin-top: 2px;
+      user-select: none;
+    }
+    .c-heart {
+      font-size: 13px;
+      color: #737373;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .c-heart.liked { color: #ed4956; }
+    .c-like-num {
+      font-size: 12.5px;
+      color: #737373;
+      margin-top: 2px;
+    }
+
+    .replies {
+      margin-left: 42px;
+      border-left: 1.5px solid #efefef;
+      padding-left: 12px;
+      margin-bottom: 10px;
+    }
+    .replies .comment { margin-bottom: 11px; }
+
+    .quick-emoji-bar {
+      border-top: 1px solid #efefef;
+      padding: 8px 16px 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 20px;
+    }
+    .quick-emoji-bar span {
+      cursor: pointer;
+      transition: transform 0.12s ease;
+      user-select: none;
+    }
+    .quick-emoji-bar span:hover { transform: scale(1.2); }
+
+    .add-comment {
+      padding: 8px 14px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: #ffffff;
+    }
+    .comment-preview {
+      flex: 1;
+      font-size: 16px;
+      color: #737373;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .post-link {
+      color: #0095f6;
+      font-weight: 700;
+      font-size: 16px;
+      opacity: 0.45;
+      cursor: pointer;
+    }
+    .au-disclaimer {
+      margin-top: 12px;
+      font-size: 13px;
+      color: #8e8e8e;
+      text-align: center;
+      padding: 0 12px;
+    }
+  </style>
+  <script>
+    function tryNextExt(img, isSlide) {
+      var exts = ["png", "jpeg", "webp"];
+      var step = parseInt(img.getAttribute("data-step") || "0", 10);
+      if (step < exts.length) {
+        img.setAttribute("data-step", step + 1);
+        img.src = img.getAttribute("data-base") + "." + exts[step];
+      } else if (!isSlide) {
+        img.remove();
+      }
+    }
+  </script>
+</head>
+<body>
+
+<div class="ig-card">
+  <div class="ig-header">
+    <div class="ig-user-left">
+      <div class="avatar-ring">
+        <div class="avatar">
+          <img src="tae_pfp.jpg" data-base="tae_pfp" onerror="tryNextExt(this, false)" alt="" />V
+        </div>
+      </div>
+      <div class="user-meta">
+        <div class="username-row">
+          <span>thv</span>
+          <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg>
+        </div>
+        <div class="location-line">Seoul, South Korea</div>
+        <div class="music-line">
+          <svg class="music-note-svg" viewBox="0 0 24 24" fill="#111111"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+          <span>Morning Coffee · JonasBlakewood</span>
+        </div>
+      </div>
+    </div>
+    <div class="more-dots">•••</div>
+  </div>
+
+  <audio id="bgMusic" loop preload="auto">
+    <source src="music.mp3" type="audio/mpeg" />
+    <source src="music.m4a" type="audio/mp4" />
+    <source src="music.wav" type="audio/wav" />
+    <source src="music.ogg" type="audio/ogg" />
+  </audio>
+
+  <div class="carousel">
+    <div class="slides" id="slides">
+      <img src="slide1.jpg" data-base="slide1" onerror="tryNextExt(this, true)" alt="Jungkook holding iced coffee in morning light" />
+      <img src="slide2.jpg" data-base="slide2" onerror="tryNextExt(this, true)" alt="Jungkook peeking out from white bed sheets" />
+      <img src="slide3.jpg" data-base="slide3" onerror="tryNextExt(this, true)" alt="Jungkook laughing with black Nothing headphones" />
+    </div>
+    <div class="slide-counter" id="counter">1 / 3</div>
+    <button class="nav-btn nav-prev" onclick="moveSlide(-1)">‹</button>
+    <button class="nav-btn nav-next" onclick="moveSlide(1)">›</button>
+
+    <button class="audio-btn" id="audioBtn" onclick="toggleAudio()" title="Tap for music">
+      <svg id="soundOffIcon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+      </svg>
+      <svg id="soundOnIcon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:none;">
+        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="actions-row">
+    <div class="left-actions">
+      <button class="icon-btn" id="likeBtn" onclick="toggleLike()">
+        <svg id="heartIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </button>
+      <button class="icon-btn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      </button>
+      <button class="icon-btn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+
+    <div class="dots" id="dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+
+    <button class="icon-btn">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+    </button>
+  </div>
+
+  <div class="post-body">
+    <div class="likes-line" id="likeCount">4,812,904 likes</div>
+    <div class="liked-by">Liked by <b>mnijungkook</b>, <b>jin</b> and <b>4,812,902 others</b></div>
+
+    <div class="caption">
+      <b>thv</b> Wake-up call for the prettiest person on Earth. Why do you try so hard to look scary when you sleep like this? 🥺🤏🏻 <span class="mention">@mnijungkook</span>
+      <div class="hashtags">
+        #GoodMorningBabyGirl #SleepyBunny #ScaryMachoMan #SureYouAre #MyPrettyBoy #PocketPrincess #Nothing #FreePromo #ILoveYouMore #DontDeleteThis #Mine #SeoulMorning
+      </div>
+    </div>
+
+    <div class="time-stamp">2 minutes ago</div>
+  </div>
+
+  <div class="comments-wrap">
+    <span class="view-all">View all 312,489 comments</span>
+
+    <!-- Pinned Thread 1 -->
+    <div class="comment">
+      <div class="c-avatar"><img src="jk_pfp.jpg" data-base="jk_pfp" onerror="tryNextExt(this, false)" alt="" />JK</div>
+      <div class="c-content">
+        <div class="pinned-row">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="#737373"><path d="M16 12V4h1V2H7v2h1v8l-2 2v2h5.2v6h1.6v-6H18v-2l-2-2z"/></svg>
+          <span>Pinned</span>
+        </div>
+        <b>mnijungkook</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg> Yah, Tae-hyung! Delete Slide Two right now! Why do you always expose me looking like a sleepy dumpling?!
+        <div class="c-meta">
+          <span>2m</span>
+          <span>Reply</span>
+          <span class="creator-liked-badge" title="Liked by author">
+            <span class="creator-mini"><img src="tae_pfp.jpg" data-base="tae_pfp" onerror="tryNextExt(this, false)" alt="" />V</span>
+            <span class="mini-heart-dot">♥</span>
+          </span>
+        </div>
+      </div>
+      <div class="c-like-col">
+        <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+        <span class="c-like-num">194K</span>
+      </div>
+    </div>
+
+    <div class="replies">
+      <div class="comment">
+        <div class="c-avatar"><img src="tae_pfp.jpg" data-base="tae_pfp" onerror="tryNextExt(this, false)" alt="" />V</div>
+        <div class="c-content">
+          <b>thv</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg><span class="c-author-tag">Author</span> No. 🤍 My page, my rules, baby girl. Besides, you’re the prettiest dumpling on Earth—how am I supposed to wake up next to that face and not brag?
+          <div class="c-meta"><span>2m</span><span>Reply</span></div>
+        </div>
+        <div class="c-like-col">
+          <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+          <span class="c-like-num">218K</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="c-avatar"><img src="jk_pfp.jpg" data-base="jk_pfp" onerror="tryNextExt(this, false)" alt="" />JK</div>
+        <div class="c-content">
+          <b>mnijungkook</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg> <span class="mention">@thv</span> Stop calling me that in public!! And stop flirting in the comments, everyone is watching!! 😡🔥
+          <div class="c-meta"><span>1m</span><span>Reply</span></div>
+        </div>
+        <div class="c-like-col">
+          <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+          <span class="c-like-num">163K</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="c-avatar"><img src="tae_pfp.jpg" data-base="tae_pfp" onerror="tryNextExt(this, false)" alt="" />V</div>
+        <div class="c-content">
+          <b>thv</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg><span class="c-author-tag">Author</span> <span class="mention">@mnijungkook</span> Why would I stop flirting with my own boyfriend? Look at your tiny waist in Slide 1 and those soft morning lips in Slide 2. I’m dangerously whipped, deal with it. 😘🤍
+          <div class="c-meta"><span>1m</span><span>Reply</span></div>
+        </div>
+        <div class="c-like-col">
+          <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+          <span class="c-like-num">241K</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="c-avatar"><img src="jk_pfp.jpg" data-base="jk_pfp" onerror="tryNextExt(this, false)" alt="" />JK</div>
+        <div class="c-content">
+          <b>mnijungkook</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg> <span class="mention">@thv</span> I am literally benching 110 kg today, so stop making me look soft or I’m hiding all your jazz vinyls!
+          <div class="c-meta">
+            <span>1m</span>
+            <span>Reply</span>
+            <span class="creator-liked-badge" title="Liked by author">
+              <span class="creator-mini"><img src="tae_pfp.jpg" data-base="tae_pfp" onerror="tryNextExt(this, false)" alt="" />V</span>
+              <span class="mini-heart-dot">♥</span>
+            </span>
+          </div>
+        </div>
+        <div class="c-like-col">
+          <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+          <span class="c-like-num">152K</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="c-avatar"><img src="tae_pfp.jpg" data-base="tae_pfp" onerror="tryNextExt(this, false)" alt="" />V</div>
+        <div class="c-content">
+          <b>thv</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg><span class="c-author-tag">Author</span> <span class="mention">@mnijungkook</span> Hide whatever you want, sweetheart. You’re still sitting in my lap tonight while I kiss that cute pout right off your face. 😉🤍
+          <div class="c-meta"><span>45s</span><span>Reply</span></div>
+        </div>
+        <div class="c-like-col">
+          <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+          <span class="c-like-num">289K</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="c-avatar"><img src="jk_pfp.jpg" data-base="jk_pfp" onerror="tryNextExt(this, false)" alt="" />JK</div>
+        <div class="c-content">
+          <b>mnijungkook</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg> <span class="mention">@thv</span> STOP!! My ears are literally burning right now!! 😭🔥🔥
+          <div class="c-meta"><span>42s</span><span>Reply</span></div>
+        </div>
+        <div class="c-like-col">
+          <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+          <span class="c-like-num">198K</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="c-avatar"><img src="tae_pfp.jpg" data-base="tae_pfp" onerror="tryNextExt(this, false)" alt="" />V</div>
+        <div class="c-content">
+          <b>thv</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg><span class="c-author-tag">Author</span> <span class="mention">@mnijungkook</span> Come here then, let me kiss them cool for you. 😘🤏🏻
+          <div class="c-meta"><span>38s</span><span>Reply</span></div>
+        </div>
+        <div class="c-like-col">
+          <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+          <span class="c-like-num">231K</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="c-avatar"><img src="jk_pfp.jpg" data-base="jk_pfp" onerror="tryNextExt(this, false)" alt="" />JK</div>
+        <div class="c-content">
+          <b>mnijungkook</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg> <span class="mention">@thv</span> <span class="emoji-only-reply">😭😭😭🏃‍♂️💨</span>
+          <div class="c-meta"><span>35s</span><span>Reply</span></div>
+        </div>
+        <div class="c-like-col">
+          <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+          <span class="c-like-num">176K</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pinned Thread 2 -->
+    <div class="comment">
+      <div class="c-avatar"><img src="jin_pfp.jpg" data-base="jin_pfp" onerror="tryNextExt(this, false)" alt="" />🐹</div>
+      <div class="c-content">
+        <div class="pinned-row">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="#737373"><path d="M16 12V4h1V2H7v2h1v8l-2 2v2h5.2v6h1.6v-6H18v-2l-2-2z"/></svg>
+          <span>Pinned</span>
+        </div>
+        <b>jin</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg> Please keep this in the bedroom! I am trying to drink my morning barley tea in peace without choking on your shameless flirting!
+        <div class="c-meta">
+          <span>2m</span>
+          <span>Reply</span>
+          <span class="creator-liked-badge" title="Liked by author">
+            <span class="creator-mini"><img src="tae_pfp.jpg" data-base="tae_pfp" onerror="tryNextExt(this, false)" alt="" />V</span>
+            <span class="mini-heart-dot">♥</span>
+          </span>
+        </div>
+      </div>
+      <div class="c-like-col">
+        <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+        <span class="c-like-num">112K</span>
+      </div>
+    </div>
+
+    <div class="replies">
+      <div class="comment">
+        <div class="c-avatar"><img src="joon_pfp.jpg" data-base="joon_pfp" onerror="tryNextExt(this, false)" alt="" />🐨</div>
+        <div class="c-content">
+          <b>rkive</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg> <span class="mention">@jin</span> Let them be, baby. You literally posted a picture of me asleep with a green cucumber sheet mask on Tuesday and captioned it "My handsome frog."
+          <div class="c-meta">
+            <span>1m</span>
+            <span>Reply</span>
+            <span class="creator-liked-badge" title="Liked by author">
+              <span class="creator-mini"><img src="tae_pfp.jpg" data-base="tae_pfp" onerror="tryNextExt(this, false)" alt="" />V</span>
+              <span class="mini-heart-dot">♥</span>
+            </span>
+          </div>
+        </div>
+        <div class="c-like-col">
+          <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+          <span class="c-like-num">98.4K</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="c-avatar"><img src="jin_pfp.jpg" data-base="jin_pfp" onerror="tryNextExt(this, false)" alt="" />🐹</div>
+        <div class="c-content">
+          <b>jin</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg> <span class="mention">@rkive</span> That was museum-worthy high art! You looked like a distressed sea cucumber, and the fans deserved some joy!
+          <div class="c-meta">
+            <span>1m</span>
+            <span>Reply</span>
+            <span class="creator-liked-badge" title="Liked by author">
+              <span class="creator-mini"><img src="tae_pfp.jpg" data-base="tae_pfp" onerror="tryNextExt(this, false)" alt="" />V</span>
+              <span class="mini-heart-dot">♥</span>
+            </span>
+          </div>
+        </div>
+        <div class="c-like-col">
+          <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+          <span class="c-like-num">134K</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="c-avatar"><img src="tae_pfp.jpg" data-base="tae_pfp" onerror="tryNextExt(this, false)" alt="" />V</div>
+        <div class="c-content">
+          <b>thv</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg><span class="c-author-tag">Author</span> <span class="mention">@jin</span> Please post the distressed sea cucumber picture again, hyung! I’ll trade you Jungkook’s extra bacon and toast! 😂🥓
+          <div class="c-meta"><span>55s</span><span>Reply</span></div>
+        </div>
+        <div class="c-like-col">
+          <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+          <span class="c-like-num">92.1K</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="c-avatar"><img src="jk_pfp.jpg" data-base="jk_pfp" onerror="tryNextExt(this, false)" alt="" />JK</div>
+        <div class="c-content">
+          <b>mnijungkook</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg> <span class="mention">@jin</span> Please tell Tae-tae to delete Slide Two! You’re supposed to be the mature eldest hyung!! (And <span class="mention">@thv</span>, DON’T YOU DARE TOUCH MY BACON!!)
+          <div class="c-meta"><span>48s</span><span>Reply</span></div>
+        </div>
+        <div class="c-like-col">
+          <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+          <span class="c-like-num">87.6K</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="c-avatar"><img src="jin_pfp.jpg" data-base="jin_pfp" onerror="tryNextExt(this, false)" alt="" />🐹</div>
+        <div class="c-content">
+          <b>jin</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg> <span class="mention">@mnijungkook</span> Sorry, Kookie, my loyalty belongs to free bacon. Besides, Joon just hid my phone charger and threatened to lock me out of the kitchen if I post the frog picture. 😤
+          <div class="c-meta"><span>39s</span><span>Reply</span></div>
+        </div>
+        <div class="c-like-col">
+          <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+          <span class="c-like-num">95.8K</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="c-avatar"><img src="joon_pfp.jpg" data-base="joon_pfp" onerror="tryNextExt(this, false)" alt="" />🐨</div>
+        <div class="c-content">
+          <b>rkive</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg> <span class="mention">@jin</span> Come back to bed, handsome, your tea is getting cold. And <span class="mention">@thv</span>, stop bullying him before he refuses to spot me at the gym today. 😂
+          <div class="c-meta"><span>32s</span><span>Reply</span></div>
+        </div>
+        <div class="c-like-col">
+          <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+          <span class="c-like-num">102K</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="c-avatar"><img src="jk_pfp.jpg" data-base="jk_pfp" onerror="tryNextExt(this, false)" alt="" />JK</div>
+        <div class="c-content">
+          <b>mnijungkook</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg> <span class="mention">@rkive</span> Finally, someone respects my gym schedule!! 😤🥊
+          <div class="c-meta"><span>28s</span><span>Reply</span></div>
+        </div>
+        <div class="c-like-col">
+          <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+          <span class="c-like-num">94.7K</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="c-avatar"><img src="tae_pfp.jpg" data-base="tae_pfp" onerror="tryNextExt(this, false)" alt="" />V</div>
+        <div class="c-content">
+          <b>thv</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg><span class="c-author-tag">Author</span> <span class="mention">@rkive</span> Don’t worry, hyung, he’s currently glaring at me across the counter while aggressively chewing bacon. Still the cutest menace alive. 🤍
+          <div class="c-meta"><span>24s</span><span>Reply</span></div>
+        </div>
+        <div class="c-like-col">
+          <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+          <span class="c-like-num">111K</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="c-avatar"><img src="jk_pfp.jpg" data-base="jk_pfp" onerror="tryNextExt(this, false)" alt="" />JK</div>
+        <div class="c-content">
+          <b>mnijungkook</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg> <span class="mention">@thv</span> <span class="emoji-only-reply">😤🙄💔</span>
+          <div class="c-meta"><span>20s</span><span>Reply</span></div>
+        </div>
+        <div class="c-like-col">
+          <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+          <span class="c-like-num">84.1K</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pinned Thread 3 -->
+    <div class="comment">
+      <div class="c-avatar"><img src="hobi_pfp.jpg" data-base="hobi_pfp" onerror="tryNextExt(this, false)" alt="" />🐿️</div>
+      <div class="c-content">
+        <div class="pinned-row">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="#737373"><path d="M16 12V4h1V2H7v2h1v8l-2 2v2h5.2v6h1.6v-6H18v-2l-2-2z"/></svg>
+          <span>Pinned</span>
+        </div>
+        <b>uarmyhope</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg> <span class="mention">@mnijungkook</span> Slide 3!! 😭😭 My heart just exploded! Look at him flexing the free promo again, <span class="mention">@nothing</span>—also, why is our tough main vocalist swimming in oversized clothes like a tiny toddler?!
+        <div class="c-meta">
+          <span>1m</span>
+          <span>Reply</span>
+          <span class="creator-liked-badge" title="Liked by author">
+            <span class="creator-mini"><img src="tae_pfp.jpg" data-base="tae_pfp" onerror="tryNextExt(this, false)" alt="" />V</span>
+            <span class="mini-heart-dot">♥</span>
+          </span>
+        </div>
+      </div>
+      <div class="c-like-col">
+        <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+        <span class="c-like-num">108K</span>
+      </div>
+    </div>
+
+    <div class="replies">
+      <div class="comment">
+        <div class="c-avatar"><img src="tae_pfp.jpg" data-base="tae_pfp" onerror="tryNextExt(this, false)" alt="" />V</div>
+        <div class="c-content">
+          <b>thv</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg><span class="c-author-tag">Author</span> <span class="mention">@uarmyhope</span> Right?! He’s literally wearing my white T-shirt in all three slides, hyung. Every morning he steals one straight out of my side of the closet even though he has twenty identical white shirts of his own. 🤍
+          <div class="c-meta"><span>48s</span><span>Reply</span></div>
+        </div>
+        <div class="c-like-col">
+          <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+          <span class="c-like-num">84.2K</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="c-avatar"><img src="jk_pfp.jpg" data-base="jk_pfp" onerror="tryNextExt(this, false)" alt="" />JK</div>
+        <div class="c-content">
+          <b>mnijungkook</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg> <span class="mention">@uarmyhope</span> Whose side are you even on?! 😭 And <span class="mention">@thv</span>, YOUR shirt just smells better—I mean, it was closer to the bed!! Stop exposing me!!
+          <div class="c-meta">
+            <span>36s</span>
+            <span>Reply</span>
+            <span class="creator-liked-badge" title="Liked by author">
+              <span class="creator-mini"><img src="tae_pfp.jpg" data-base="tae_pfp" onerror="tryNextExt(this, false)" alt="" />V</span>
+              <span class="mini-heart-dot">♥</span>
+            </span>
+          </div>
+        </div>
+        <div class="c-like-col">
+          <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+          <span class="c-like-num">139K</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="c-avatar"><img src="tae_pfp.jpg" data-base="tae_pfp" onerror="tryNextExt(this, false)" alt="" />V</div>
+        <div class="c-content">
+          <b>thv</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg><span class="c-author-tag">Author</span> <span class="mention">@mnijungkook</span> Wait… it smells better? 😏 Say that again a little louder for the comments, baby.
+          <div class="c-meta"><span>30s</span><span>Reply</span></div>
+        </div>
+        <div class="c-like-col">
+          <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+          <span class="c-like-num">154K</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="c-avatar"><img src="jk_pfp.jpg" data-base="jk_pfp" onerror="tryNextExt(this, false)" alt="" />JK</div>
+        <div class="c-content">
+          <b>mnijungkook</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg> <span class="mention">@thv</span> I DID NOT TYPE THAT!! MY PHONE AUTOCORRECTED!! 🤬🔥
+          <div class="c-meta"><span>24s</span><span>Reply</span></div>
+        </div>
+        <div class="c-like-col">
+          <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+          <span class="c-like-num">141K</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="c-avatar"><img src="tae_pfp.jpg" data-base="tae_pfp" onerror="tryNextExt(this, false)" alt="" />V</div>
+        <div class="c-content">
+          <b>thv</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg><span class="c-author-tag">Author</span> <span class="mention">@mnijungkook</span> Sure, sweetheart. Keep telling yourself that while wearing my gray sweatpants too. Looks prettier on you anyway. 😘
+          <div class="c-meta"><span>19s</span><span>Reply</span></div>
+        </div>
+        <div class="c-like-col">
+          <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+          <span class="c-like-num">168K</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="c-avatar"><img src="jk_pfp.jpg" data-base="jk_pfp" onerror="tryNextExt(this, false)" alt="" />JK</div>
+        <div class="c-content">
+          <b>mnijungkook</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg> <span class="mention">@thv</span> <span class="emoji-only-reply">🤐🥊💨</span>
+          <div class="c-meta"><span>15s</span><span>Reply</span></div>
+        </div>
+        <div class="c-like-col">
+          <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+          <span class="c-like-num">72.4K</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pinned Thread 4 -->
+    <div class="comment">
+      <div class="c-avatar"><img src="jimin_pfp.jpg" data-base="jimin_pfp" onerror="tryNextExt(this, false)" alt="" />🐥</div>
+      <div class="c-content">
+        <div class="pinned-row">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="#737373"><path d="M16 12V4h1V2H7v2h1v8l-2 2v2h5.2v6h1.6v-6H18v-2l-2-2z"/></svg>
+          <span>Pinned</span>
+        </div>
+        <b>j.m</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg> Why is someone already spamming our group chat with intense gym mirror selfies to prove he’s "scary" while clearly standing in <span class="mention">@thv</span>’s giant fluffy slippers? 😂😂🩴
+        <div class="c-meta">
+          <span>1m</span>
+          <span>Reply</span>
+          <span class="creator-liked-badge" title="Liked by author">
+            <span class="creator-mini"><img src="tae_pfp.jpg" data-base="tae_pfp" onerror="tryNextExt(this, false)" alt="" />V</span>
+            <span class="mini-heart-dot">♥</span>
+          </span>
+        </div>
+      </div>
+      <div class="c-like-col">
+        <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+        <span class="c-like-num">121K</span>
+      </div>
+    </div>
+
+    <div class="replies">
+      <div class="comment">
+        <div class="c-avatar"><img src="jk_pfp.jpg" data-base="jk_pfp" onerror="tryNextExt(this, false)" alt="" />JK</div>
+        <div class="c-content">
+          <b>mnijungkook</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg> <span class="mention">@j.m</span> Stay out of this!! Those slippers were just by the door! Go bother your own boyfriends instead!
+          <div class="c-meta"><span>50s</span><span>Reply</span></div>
+        </div>
+        <div class="c-like-col">
+          <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+          <span class="c-like-num">115K</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="c-avatar"><img src="yoongi_pfp.jpg" data-base="yoongi_pfp" onerror="tryNextExt(this, false)" alt="" />🐱</div>
+        <div class="c-content">
+          <b>agustd</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg> <span class="mention">@mnijungkook</span> Leave us out of your morning soap opera, kid. Hobi and I are peacefully drinking iced americanos while Jimin laughs into my collarbone. Eat your eggs before you faint at the gym.
+          <div class="c-meta">
+            <span>35s</span>
+            <span>Reply</span>
+            <span class="creator-liked-badge" title="Liked by author">
+              <span class="creator-mini"><img src="tae_pfp.jpg" data-base="tae_pfp" onerror="tryNextExt(this, false)" alt="" />V</span>
+              <span class="mini-heart-dot">♥</span>
+            </span>
+          </div>
+        </div>
+        <div class="c-like-col">
+          <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+          <span class="c-like-num">149K</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="c-avatar"><img src="jk_pfp.jpg" data-base="jk_pfp" onerror="tryNextExt(this, false)" alt="" />JK</div>
+        <div class="c-content">
+          <b>mnijungkook</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg> <span class="mention">@agustd</span> Even you’re roasting me now?! Fine!! I’m going to eat six eggs, bench 120 kg, and lift Taehyung-hyung’s car today, watch me!! 😤🥊
+          <div class="c-meta"><span>28s</span><span>Reply</span></div>
+        </div>
+        <div class="c-like-col">
+          <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+          <span class="c-like-num">89.5K</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="c-avatar"><img src="tae_pfp.jpg" data-base="tae_pfp" onerror="tryNextExt(this, false)" alt="" />V</div>
+        <div class="c-content">
+          <b>thv</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg><span class="c-author-tag">Author</span> <span class="mention">@agustd</span> Don’t worry, hyung, I just slid an extra plate of eggs in front of him and kissed his pout away, so he’s already calming down. 😉🍳
+          <div class="c-meta"><span>20s</span><span>Reply</span></div>
+        </div>
+        <div class="c-like-col">
+          <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+          <span class="c-like-num">105K</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="c-avatar"><img src="jimin_pfp.jpg" data-base="jimin_pfp" onerror="tryNextExt(this, false)" alt="" />🐥</div>
+        <div class="c-content">
+          <b>j.m</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg> <span class="mention">@thv</span> He folded in two seconds flat, didn’t he? Classic Kookie. 😂😂❤️
+          <div class="c-meta"><span>15s</span><span>Reply</span></div>
+        </div>
+        <div class="c-like-col">
+          <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+          <span class="c-like-num">93.2K</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="c-avatar"><img src="jk_pfp.jpg" data-base="jk_pfp" onerror="tryNextExt(this, false)" alt="" />JK</div>
+        <div class="c-content">
+          <b>mnijungkook</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg> <span class="mention">@j.m</span> STOP READING MY MIND!! 😭😭
+          <div class="c-meta"><span>10s</span><span>Reply</span></div>
+        </div>
+        <div class="c-like-col">
+          <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+          <span class="c-like-num">88.4K</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="c-avatar"><img src="tae_pfp.jpg" data-base="tae_pfp" onerror="tryNextExt(this, false)" alt="" />V</div>
+        <div class="c-content">
+          <b>thv</b> <svg class="verified" viewBox="0 0 24 24" fill="#0095f6"><path d="M12 2l2.4 2.1 3.1-.3.9 3 2.8 1.5-.8 3.1 1.6 2.7-2.2 2.3.2 3.1-3.1.8-1.6 2.7-3-.9-2.9 1.6-2.2-2.3-3.1.1-.8-3.1-2.8-1.5.9-3-1.7-2.7 2.2-2.3-.2-3.1 3.1-.8L9.6 3l3 .9L12 2zm-1.2 13.7l5.8-5.8-1.4-1.4-4.4 4.4-2-2-1.4 1.4 3.4 3.4z"/></svg><span class="c-author-tag">Author</span> <span class="mention">@j.m</span> Folded faster than laundry. 🤍
+          <div class="c-meta"><span>5s</span><span>Reply</span></div>
+        </div>
+        <div class="c-like-col">
+          <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+          <span class="c-like-num">118K</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fan Comments -->
+    <div class="comment">
+      <div class="c-avatar"><img src="fan1_pfp.jpg" data-base="fan1_pfp" onerror="tryNextExt(this, false)" alt="" />💜</div>
+      <div class="c-content">
+        <b>taekook_universe</b> Wait—did Jungkook just accidentally confess that Taehyung’s shirt smells better and then blame autocorrect?! 😭😭 Call an ambulance for me right now!
+        <div class="c-meta"><span>40s</span><span>Reply</span></div>
+      </div>
+      <div class="c-like-col">
+        <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+        <span class="c-like-num">31.2K</span>
+      </div>
+    </div>
+
+    <div class="comment">
+      <div class="c-avatar"><img src="fan2_pfp.jpg" data-base="fan2_pfp" onerror="tryNextExt(this, false)" alt="" />📸</div>
+      <div class="c-content">
+        <b>kookv.archives</b> Notice how Jungkook wears those Nothing headphones in literally every candid? Plus wearing his boyfriend’s white tee, gray sweatpants, AND fluffy slippers—boyfriend privilege is at its peak! 😭👏🏻
+        <div class="c-meta"><span>35s</span><span>Reply</span></div>
+      </div>
+      <div class="c-like-col">
+        <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+        <span class="c-like-num">24.8K</span>
+      </div>
+    </div>
+
+    <div class="comment">
+      <div class="c-avatar"><img src="fan3_pfp.jpg" data-base="fan3_pfp" onerror="tryNextExt(this, false)" alt="" />🥊</div>
+      <div class="c-content">
+        <b>bunny_macho_era</b> Jungkook threatening to lift Taehyung’s whole car while Namjoon and Jin fight over a "distressed sea cucumber" sheet mask photo in the replies. 😭😭 Bangtan’s comment section is peak comedy!
+        <div class="c-meta"><span>20s</span><span>Reply</span></div>
+      </div>
+      <div class="c-like-col">
+        <div class="c-heart" onclick="toggleCommentHeart(this)">♡</div>
+        <span class="c-like-num">19.4K</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="quick-emoji-bar">
+    <span onclick="addQuickEmoji('❤️')">❤️</span>
+    <span onclick="addQuickEmoji('🙌')">🙌</span>
+    <span onclick="addQuickEmoji('🔥')">🔥</span>
+    <span onclick="addQuickEmoji('👏')">👏</span>
+    <span onclick="addQuickEmoji('😢')">😢</span>
+    <span onclick="addQuickEmoji('😍')">😍</span>
+    <span onclick="addQuickEmoji('😮')">😮</span>
+    <span onclick="addQuickEmoji('😂')">😂</span>
+  </div>
+  <div class="add-comment">
+    <span id="commentPreview" class="comment-preview" data-empty="true">Add a comment for thv...</span>
+    <span class="post-link" id="postBtn">Post</span>
+  </div>
+</div>
+
+<div class="au-disclaimer">
+  ✨ Fanmade Fictional Story Prop • Taekook Social Media AU • Not affiliated with Instagram or artists
+</div>
+
+<script>
+  let index = 0;
+  const total = 3;
+  function moveSlide(step) {
+    index = (index + step + total) % total;
+    document.getElementById("slides").style.transform = `translateX(-${index * 100}%)`;
+    document.getElementById("counter").textContent = `${index + 1} / ${total}`;
+    document.querySelectorAll(".dot").forEach((d, i) => d.classList.toggle("active", i === index));
+  }
+
+  let liked = false;
+  function toggleLike() {
+    liked = !liked;
+    const icon = document.getElementById("heartIcon");
+    const count = document.getElementById("likeCount");
+    icon.setAttribute("fill", liked ? "#ed4956" : "none");
+    icon.setAttribute("stroke", liked ? "#ed4956" : "#111111");
+    count.textContent = liked ? "4,812,905 likes" : "4,812,904 likes";
+  }
+
+  function toggleCommentHeart(el) {
+    el.classList.toggle("liked");
+    el.textContent = el.classList.contains("liked") ? "♥" : "♡";
+  }
+
+  function addQuickEmoji(emoji) {
+    const box = document.getElementById("commentPreview");
+    if (box.dataset.empty !== "false") {
+      box.textContent = emoji;
+      box.dataset.empty = "false";
+      box.style.color = "#111111";
+    } else {
+      box.textContent += emoji;
+    }
+    document.getElementById("postBtn").style.opacity = "1";
+  }
+
+  const startSec = 0;
+  const endSec = 20;
+  const bgMusic = document.getElementById("bgMusic");
+
+  bgMusic.addEventListener("timeupdate", function () {
+    if (bgMusic.currentTime >= endSec) {
+      bgMusic.currentTime = startSec;
+      if (!bgMusic.paused) {
+        bgMusic.play().catch(() => {});
+      }
+    }
+  });
+
+  function toggleAudio() {
+    const offIcon = document.getElementById("soundOffIcon");
+    const onIcon = document.getElementById("soundOnIcon");
+    if (bgMusic.paused) {
+      bgMusic.play().catch(() => {});
+      offIcon.style.display = "none";
+      onIcon.style.display = "block";
+    } else {
+      bgMusic.pause();
+      offIcon.style.display = "block";
+      onIcon.style.display = "none";
+    }
+  }
+</script>
+</body>
+</html>
